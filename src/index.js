@@ -4,7 +4,6 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import Firebase, { FirebaseContext } from './components/Firebase';
-
 ReactDOM.render(
 <FirebaseContext.Provider value={new Firebase()}>
 <App />
@@ -15,3 +14,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase';
 
+import { Progress } from 'reactstrap';
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +47,7 @@ class Home extends Component {
         <h1>Admin</h1>
         {loading && <div>Loading ...</div>}
         <UserList users={users} />
+        {/* <Progress /> */}
       </div>
     );
   }
@@ -52,6 +55,7 @@ class Home extends Component {
 
 
 const UserList = ({ users }) => (
+  <div>
   <ul>
     {users.map(user => (
       <li key={user.uid}>
@@ -67,6 +71,7 @@ const UserList = ({ users }) => (
       </li>
     ))}
   </ul>
+  </div>
 );
 
 export default withFirebase(Home);
