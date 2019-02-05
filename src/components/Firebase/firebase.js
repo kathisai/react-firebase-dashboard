@@ -18,7 +18,7 @@
           }
 
           // ** Auth API
-          doCreateUserQithEmailAndPassowrd = (email, password) => this.auth.createUserWithEmailAndPassword(email, password);
+          doCreateUserWithEmailAndPassowrd = (email, password) => this.auth.createUserWithEmailAndPassword(email, password);
           doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
           doSignOut = () => this.auth.signOut();
           doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
