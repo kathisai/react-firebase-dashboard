@@ -31,6 +31,8 @@
           user = uid => this.db.ref(`users/${uid}`);
 
           users = () => this.db.ref('users/');
+
+          progress = () => this.db.ref('progress/')
       }
 
       export default firebase;

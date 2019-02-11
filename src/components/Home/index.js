@@ -11,6 +11,10 @@ class Home extends Component {
     this.state = {
       loading: false,
       users: [],
+      progress_value: 2,
+      animated: false,
+      color: "danger",
+      label: "",
     };
   }
 
@@ -33,6 +37,25 @@ class Home extends Component {
     }, error => {
       console.error(error);
     });
+
+    this.props.firebase.progress().on('value', snapshot => {
+      console.log("getting progress value !!!");
+      const progress_value = snapshot.child('value').val();
+      const animated = snapshot.child('animated').val();
+      const color = snapshot.child('color').val();
+      const label = snapshot.child('label').val();
+    
+
+      this.setState({
+        progress_value: progress_value,
+        animated: animated,
+        color: color,
+        label: label,
+      });
+    }, error => {
+      console.error(error);
+    });
+
   }
 
   componentWillUnmount() {
@@ -43,11 +66,17 @@ class Home extends Component {
     const { users, loading } = this.state;
 
     return (
-      <div>
-        <h1>Admin</h1>
-        {loading && <div>Loading ...</div>}
-        <UserList users={users} />
-        {/* <Progress /> */}
+      <div >
+        <h1>Dynamic Progress</h1>
+        <Progress  animated={this.state.animated} color={this.state.color} value={this.state.progress_value}>{this.state.label} </Progress>
+        <br/>
+        <br/>
+        <Progress  animated={this.state.animated} color={this.state.color} value={this.state.progress_value}>{this.state.label} </Progress>
+        <br/>
+        <br/>
+        <Progress  animated={this.state.animated} color={this.state.color} value={this.state.progress_value}>{this.state.label} </Progress>
+        {/* {loading && <div>Loading ...</div>}
+        <UserList users={users} /> */}
       </div>
     );
   }
